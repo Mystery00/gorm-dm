@@ -2,10 +2,11 @@ package dameng
 
 import (
 	"bytes"
+	"context"
 	"database/sql"
 	"reflect"
 
-	"github.com/ibeacon-haofei/gorm-dm/clauses"
+	"github.com/Mystery00/gorm-dm/clauses"
 	"github.com/thoas/go-funk"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
@@ -126,7 +127,7 @@ func Create(db *gorm.DB) {
 							func(field *gormSchema.Field) {
 								switch insertTo.Kind() {
 								case reflect.Struct:
-									if err = field.Set(insertTo, stmt.Vars[boundVars[field.Name]].(sql.Out).Dest); err != nil {
+									if err = field.Set(context.Background(), insertTo, stmt.Vars[boundVars[field.Name]].(sql.Out).Dest); err != nil {
 										db.AddError(err)
 									}
 								case reflect.Map:
