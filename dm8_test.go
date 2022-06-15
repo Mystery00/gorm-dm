@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ibeacon-haofei/gorm-dm/dameng"
+	"github.com/Mystery00/gorm-dm/dameng"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
